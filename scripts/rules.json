@@ -1,0 +1,23 @@
+{
+  "_설명": "organize 규칙. custom이 categories보다 먼저 적용된다. 폴더 이름은 _정리/ 아래에 만들어진다. 바꾼 뒤엔 selftest를 다시 돌려라.",
+  "custom": [
+    {"name": ["*세금계산서*", "*영수증*", "*계산서*", "*invoice*", "*receipt*"], "folder": "회계"}
+  ],
+  "categories": [
+    ["문서", "pdf doc docx hwp hwpx xls xlsx xlsm csv ppt pptx txt md rtf odt"],
+    ["이미지", "jpg jpeg png gif heic webp bmp tif tiff svg"],
+    ["영상", "mp4 mov avi mkv wmv webm"],
+    ["음악", "mp3 m4a wav flac aac ogg"],
+    ["압축", "zip 7z rar tar gz tgz bz2 xz"],
+    ["설치파일", "exe msi dmg pkg appx msix"]
+  ],
+  "screenshot": "(screenshot|screen shot|스크린샷|캡처|kakaotalk_.*capture)",
+  "by_year": ["문서", "이미지", "스크린샷", "회계"],
+  "partial_ext": "crdownload part download partial tmp temp",
+  "backup_ext": "bak old",
+  "installer_days": 30,
+  "keep_dirs": ["Telegram Desktop", "카카오톡 받은 파일", "KakaoTalk*", "WeChat Files", "LINE*"],
+  "project_markers": [".git", "package.json", "pyproject.toml", "setup.py", "Cargo.toml", "go.mod", "pom.xml", "*.sln"],
+  "app_ext": "exe",
+  "min_age_hours": 24
+}

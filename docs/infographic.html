@@ -1,0 +1,59 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1200px;height:548px;background:#FAF9F6;font-family:Pretendard,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;color:#141F38;padding:36px 44px}
+h1{font-size:34px;font-weight:800;letter-spacing:-.5px}
+.sub{font-size:17px;color:#4a5568;margin:6px 0 24px}
+.flow{display:flex;align-items:center;gap:14px}
+.box{background:#141F38;color:#fff;border-radius:14px;padding:18px 18px;font-size:15px;line-height:1.55;word-break:keep-all}
+.box b{display:block;font-size:18px;margin-bottom:6px}
+.arrow{font-size:30px;color:#9AA3B2;flex:none}
+.col{display:flex;flex-direction:column;gap:14px;flex:1}
+.an{background:#2E5E8C}.org{background:#2E7D5B}
+.mono{font-family:Menlo,monospace;font-size:13px;background:rgba(255,255,255,.14);border-radius:6px;padding:2px 6px;white-space:nowrap}
+.cards{display:flex;gap:14px;margin-top:24px}
+.card{flex:1;background:#fff;border:2px solid #e3e1da;border-radius:14px;padding:14px 16px}
+.card .n{font-size:28px;font-weight:800;color:#B84A10}
+.card .t{font-size:14px;color:#4a5568;margin-top:2px;line-height:1.4;word-break:keep-all}
+</style></head><body>
+<h1 data-k="title"></h1>
+<div class="sub" data-k="sub"></div>
+<div class="flow">
+  <div class="box" style="width:245px;align-self:stretch;display:flex;flex-direction:column;justify-content:center"><b data-k="me"></b><span data-k="me2"></span></div>
+  <div class="arrow">→</div>
+  <div class="box" style="width:270px;align-self:stretch;display:flex;flex-direction:column;justify-content:center;background:#3a4560"><b data-k="pipe"></b><span data-k="pipe2"></span></div>
+  <div class="arrow">⇉</div>
+  <div class="col">
+    <div class="box an"><b data-k="a"></b><span data-k="a2"></span></div>
+    <div class="box org"><b data-k="o"></b><span data-k="o2"></span></div>
+  </div>
+</div>
+<div class="cards">
+  <div class="card"><div class="n">0</div><div class="t" data-k="c1"></div></div>
+  <div class="card"><div class="n">0</div><div class="t" data-k="c2"></div></div>
+  <div class="card"><div class="n">undo</div><div class="t" data-k="c3"></div></div>
+  <div class="card"><div class="n" id="mut"></div><div class="t" data-k="c4"></div></div>
+</div>
+<script>
+const T={ko:{
+ title:"remote-disk-scope",
+ sub:"다른 PC의 디스크를 — 아무것도 설치하지 않고 — 분석하고 자동 정리한다",
+ me:"내 컴퓨터",me2:"mac · Linux<br>Python 3.9+ 표준 라이브러리만",
+ pipe:"SSH 한 줄",pipe2:"스크립트 자체를 stdin으로 흘려보냄<br>(Tailscale·LAN 무엇이든)<br>대상엔 Python만 있으면 됨",
+ a:"분석 — 읽기 전용",a2:"이름·크기·시각만 gzip 스냅샷으로 받아옴<br><span class=mono>overview · find · diff</span> 는 내 컴퓨터에서",
+ o:"자동 정리 — 이동만, 삭제 없음",o2:"<span class=mono>_정리/카테고리/연도</span>, 폴더째 판단<br>중복·빈 폴더·오래된 설치파일 → <span class=mono>_삭제후보</span>",
+ c1:"분석할 때 대상 PC에<br>남기는 파일",c2:"자동 삭제되는 파일<br>— 비우기는 사람이",c3:"모든 이동을 로그로 기록,<br>한 줄로 원상 복구",c4:"일부러 심은 버그를<br>자체검사가 잡아낸 수"},
+en:{
+ title:"remote-disk-scope",
+ sub:"Analyze and auto-organize another computer's disk — without installing anything on it",
+ me:"Your machine",me2:"macOS · Linux<br>Python 3.9+ stdlib only",
+ pipe:"One SSH call",pipe2:"Script piped over stdin<br>(Tailscale, LAN, anything)<br>Target only needs Python",
+ a:"Analyze — read-only",a2:"Names, sizes, times come back as a gzip snapshot<br><span class=mono>overview · find · diff</span> run locally",
+ o:"Organize — move only, never delete",o2:"<span class=mono>_정리/category/year</span>, folders judged whole<br>dups, empty dirs, old installers → <span class=mono>_삭제후보</span>",
+ c1:"Files left behind on<br>the target by analysis",c2:"Files deleted automatically<br>(a human empties the bin)",c3:"Every move is logged;<br>one command restores it all",c4:"Planted bugs caught<br>by the selftest"}};
+const q=new URLSearchParams(location.search), L=T[q.get("lang")||"ko"];
+document.documentElement.lang=q.get("lang")||"ko";
+document.querySelectorAll("[data-k]").forEach(e=>e.innerHTML=L[e.dataset.k]);
+document.getElementById("mut").textContent=q.get("mut")||"?";
+</script></body></html>
